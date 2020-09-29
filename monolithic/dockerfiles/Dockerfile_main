@@ -1,0 +1,15 @@
+FROM mosaik/orch-base:v1
+
+ARG SCENARIO_FILE
+ARG EXTRA
+
+### simulators
+RUN pip install mosaik-csv==1.0.3
+RUN pip install mosaik-hdf5==0.3
+RUN pip install mosaik-householdsim==2.0.3
+RUN pip install mosaik-pypower==0.7.2
+RUN pip install networkx==2.4
+
+COPY $SCENARIO_FILE .
+COPY $EXTRA .
+ENTRYPOINT python $SCENARIO_FILE

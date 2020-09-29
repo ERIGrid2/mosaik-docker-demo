@@ -1,0 +1,18 @@
+{
+  "id": "MONOLITHIC-TEST-SIM",
+  "orchestrator": {
+    "docker_file": "dockerfiles/Dockerfile_main",
+    "scenario_file": "main.py",
+    "extra_files": [
+      "demo_lv_grid.json"
+    ],
+    "extra_dirs": [
+      "./data"
+    ],
+    "results": [
+      "demo.hdf5"
+    ]
+  },
+  "sim_ids_up": [],
+  "sim_ids_down": []
+}

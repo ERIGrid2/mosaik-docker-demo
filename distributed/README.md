@@ -1,0 +1,3 @@
+# Distributed mosaik-docker simulation setup
+
+Still missing ...
