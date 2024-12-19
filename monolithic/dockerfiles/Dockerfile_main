@@ -1,14 +1,22 @@
-FROM mosaik/orch-base:v1
+FROM python:3.6 AS mosaik-orch-base
+
+RUN apt-get update
+
+### mosaik orchestrator base
+RUN pip install --upgrade pip
+RUN pip install mosaik~=2.6.0 mosaik-api~=2.4.2 simpy~=3.0.13 simpy.io~=0.2.3
+
+WORKDIR /mosaik
+
+ENV PYTHONDONTWRITEBYTECODE=1
+
+FROM mosaik-orch-base
 
 ARG SCENARIO_FILE
 ARG EXTRA
 
-### simulators
-RUN pip install mosaik-csv==1.0.3
-RUN pip install mosaik-hdf5==0.3
-RUN pip install mosaik-householdsim==2.0.3
-RUN pip install mosaik-pypower==0.7.2
-RUN pip install networkx==2.4
+### Add additional packages and simulators here.
+### e.g.: RUN pip install mosaik-csv==1.0.3
 
 COPY $SCENARIO_FILE .
 COPY $EXTRA .
