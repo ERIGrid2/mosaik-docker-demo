@@ -1,4 +1,4 @@
-FROM python:3.6 AS mosaik-orch-base
+FROM python:3.9 AS mosaik-orch-base
 
 RUN apt-get update
 
@@ -16,7 +16,7 @@ ARG SCENARIO_FILE
 ARG EXTRA
 
 ### Add additional packages and simulators here.
-### e.g.: RUN pip install mosaik-csv==1.0.3
+RUN pip install mosaik_pypower~=0.7.3 numpy~=1.26 pyrlu~=0.2.1 mosaik-householdsim~=2.0.3 mosaik-csv==1.0.4 mosaik-hdf5==0.3
 
 COPY $SCENARIO_FILE .
 COPY $EXTRA .
